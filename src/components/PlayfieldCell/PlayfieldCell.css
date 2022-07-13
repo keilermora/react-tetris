@@ -1,0 +1,43 @@
+.playfield-cell {
+  border-style: solid;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-width: var(--border-width);
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color);
+}
+
+.playfield-cell--color-0 {
+  background-color: var(--color-0);
+  border-color: var(--color-0);
+}
+
+.playfield-cell--color-1 {
+  background-color: var(--color-1);
+}
+
+.playfield-cell--color-2 {
+  background-color: var(--color-2);
+}
+
+.playfield-cell--color-3 {
+  background-color: var(--color-3);
+}
+
+.playfield-cell--color-4 {
+  background-color: var(--color-4);
+}
+
+.playfield-cell--color-5 {
+  background-color: var(--color-5);
+}
+
+.playfield-cell--color-6 {
+  background-color: var(--color-6);
+}
+
+.playfield-cell--color-7 {
+  background-color: var(--color-7);
+}
