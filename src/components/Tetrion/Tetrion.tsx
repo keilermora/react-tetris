@@ -7,9 +7,15 @@ import './Tetrion.css';
 const Tetrion = () => {
   return (
     <div className="tetrion">
-      <Matrix />
-      <NextQueue />
-      <GameInformation />
+      <div className="tetrion__game-information">
+        <GameInformation />
+      </div>
+      <div className="tetrion__matrix">
+        <Matrix />
+      </div>
+      <div className="tetrion__next-queue">
+        <NextQueue />
+      </div>
     </div>
   );
 };

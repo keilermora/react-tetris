@@ -40,7 +40,7 @@ body {
   /* Numbers define values that will be used throughout the CSS.
   --tile-size: 20px for example will set size of the grid squares. */
   --cols: 10;
-  --rows: 20;
+  --rows: 18;
   --tile-size: 20px;
   --border-width: 5px;
 }
