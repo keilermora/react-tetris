@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+case `uname` in
+    *CYGWIN*|*MINGW*|*MSYS*) exit 0;;
+esac
+. "$(dirname -- "$0")/_/husky.sh"
+
+exec < /dev/tty && node_modules/.bin/cz --hook || true
