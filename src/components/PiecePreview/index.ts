@@ -1,0 +1,1 @@
+export { PiecePreview } from './PiecePreview';

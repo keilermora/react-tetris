@@ -1,7 +1,6 @@
 import React from 'react';
-import { PlayfieldCell } from '../PlayfieldCell/PlayfieldCell';
-
 import './PiecePreview.css';
+import { PlayfieldCell } from '../PlayfieldCell';
 
 const PiecePreview = () => {
   // @TODO Draw a real piece
@@ -12,7 +11,6 @@ const PiecePreview = () => {
     [0, 0, 0, 0],
   ];
 
-  // Map the block to the grid
   const grid = piece.map((rowArray, row) => {
     return rowArray.map((value, col) => {
       return <PlayfieldCell key={`${row}${col}`} colorNumber={value} />;

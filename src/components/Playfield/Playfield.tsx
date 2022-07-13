@@ -1,7 +1,6 @@
 import React from 'react';
-import { PlayfieldCell } from '../PlayfieldCell/PlayfieldCell';
-
 import './Playfield.css';
+import { PlayfieldCell } from '../PlayfieldCell';
 
 const Playfield = () => {
   // @TODO Playfield rows & cols shouldn't be hardcoded

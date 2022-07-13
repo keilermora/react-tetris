@@ -1,6 +1,7 @@
 import React from 'react';
-import { PiecePreview } from '../PiecePreview/PiecePreview';
-import { Playfield } from '../Playfield/Playfield';
+import './Tetrion.css';
+import { PiecePreview } from '../PiecePreview';
+import { Playfield } from '../Playfield';
 
 const Tetrion = () => {
   return (
