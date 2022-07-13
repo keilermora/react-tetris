@@ -1,10 +1,10 @@
 import React from 'react';
-import { PlayfieldCell } from '../PlayfieldCell/PlayfieldCell';
+import { Playfield } from '../Playfield/Playfield';
 
 const Tetrion = () => {
   return (
     <div className="tetrion">
-      <PlayfieldCell colorNumber={1} />
+      <Playfield />
     </div>
   );
 };
