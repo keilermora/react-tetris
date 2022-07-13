@@ -1,4 +1,4 @@
-.playfield {
+.matrix {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;

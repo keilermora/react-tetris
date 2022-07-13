@@ -1,4 +1,4 @@
-.playfield-cell {
+.matrix-cell {
   border-style: solid;
   width: var(--tile-size);
   height: var(--tile-size);
@@ -9,35 +9,35 @@
   border-bottom-color: var(--border-bottom-color);
 }
 
-.playfield-cell--color-0 {
+.matrix-cell--color-0 {
   background-color: var(--color-0);
   border-color: var(--color-0);
 }
 
-.playfield-cell--color-1 {
+.matrix-cell--color-1 {
   background-color: var(--color-1);
 }
 
-.playfield-cell--color-2 {
+.matrix-cell--color-2 {
   background-color: var(--color-2);
 }
 
-.playfield-cell--color-3 {
+.matrix-cell--color-3 {
   background-color: var(--color-3);
 }
 
-.playfield-cell--color-4 {
+.matrix-cell--color-4 {
   background-color: var(--color-4);
 }
 
-.playfield-cell--color-5 {
+.matrix-cell--color-5 {
   background-color: var(--color-5);
 }
 
-.playfield-cell--color-6 {
+.matrix-cell--color-6 {
   background-color: var(--color-6);
 }
 
-.playfield-cell--color-7 {
+.matrix-cell--color-7 {
   background-color: var(--color-7);
 }

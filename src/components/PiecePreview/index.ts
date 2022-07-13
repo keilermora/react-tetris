@@ -1,1 +1,0 @@
-export { PiecePreview } from './PiecePreview';

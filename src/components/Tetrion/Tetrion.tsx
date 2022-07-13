@@ -1,13 +1,13 @@
 import React from 'react';
+import { Matrix } from '../Matrix';
+import { NextQueue } from '../NextQueue';
 import './Tetrion.css';
-import { PiecePreview } from '../PiecePreview';
-import { Playfield } from '../Playfield';
 
 const Tetrion = () => {
   return (
     <div className="tetrion">
-      <Playfield />
-      <PiecePreview />
+      <Matrix />
+      <NextQueue />
     </div>
   );
 };
