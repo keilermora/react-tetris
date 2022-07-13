@@ -1,0 +1,5 @@
+.piece-preview {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, var(--tile-size));
+}
