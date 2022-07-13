@@ -9,7 +9,9 @@
   grid-gap: var(--tile-size) var(--tile-size);
   grid-template-columns: var(--col-side) var(--col-center) var(--col-side);
   grid-template-rows: var(--grid-height) 100px;
-  grid-template-areas: 'left center right';
+  grid-template-areas:
+    'left center right'
+    '. bottom .';
 }
 
 .tetrion__game-information {
@@ -22,4 +24,8 @@
 
 .tetrion__next-queue {
   grid-area: right;
+}
+
+.tetrion__controls {
+  grid-area: bottom;
 }

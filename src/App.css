@@ -10,6 +10,8 @@
 
 .app__tetrion {
   flex: 1 auto;
+  display: flex;
+  align-items: center;
 }
 
 .app__footer {

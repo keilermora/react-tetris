@@ -1,4 +1,5 @@
 import React from 'react';
+import { Controls } from '../Controls';
 import { GameInformation } from '../GameInformation';
 import { Matrix } from '../Matrix';
 import { NextQueue } from '../NextQueue';
@@ -15,6 +16,9 @@ const Tetrion = () => {
       </div>
       <div className="tetrion__next-queue">
         <NextQueue />
+      </div>
+      <div className="tetrion__controls">
+        <Controls />
       </div>
     </div>
   );
