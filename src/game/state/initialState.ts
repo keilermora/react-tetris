@@ -19,7 +19,7 @@ export const getInitialState = (): GameState => {
     tetriminoInPlay: {
       tetrimino: getRandomTetrimino(),
       rotation: 0,
-      x: 5,
+      x: 3,
       y: -4, // Generate tetrimino above the Skyline
     },
     nextTetrimino: getRandomTetrimino(),

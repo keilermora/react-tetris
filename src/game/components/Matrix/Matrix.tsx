@@ -1,21 +1,44 @@
 import React from 'react';
+import { useGameState } from '../../../hooks/useGameState';
 import { MatrixCell } from '../MatrixCell';
 import './Matrix.css';
 
 const Matrix = () => {
-  // @TODO Matrix dimensions shouldn't be hardcoded
-  const rows = 18;
-  const cols = 10;
+  const { state } = useGameState();
+  const { matrixGrid, tetriminoInPlay } = state;
 
-  const matrixGrid: JSX.Element[][] = [];
-  for (let row = 0; row < rows; row++) {
-    matrixGrid.push([]);
-    for (let col = 0; col < cols; col++) {
-      matrixGrid[row].push(<MatrixCell key={`${col}${row}`} colorNumber={1} />);
-    }
-  }
+  const tetriminoShape =
+    tetriminoInPlay.tetrimino.shapes[tetriminoInPlay.rotation];
+  const tetriminoColorNumber = tetriminoInPlay.tetrimino.colorNumber;
 
-  return <div className="matrix">{matrixGrid}</div>;
+  const gridCells = matrixGrid.map((rowArray, row) => {
+    return rowArray.map((cellValue, col) => {
+      // Place the cell on the grid
+      const cellX = col - tetriminoInPlay.x;
+      const cellY = row - tetriminoInPlay.y;
+      let colorNumber = cellValue;
+
+      // Define if the cell color will be:
+      // - Empty
+      // - Tetrimino in play
+      // - Any other Mino in the Matrix
+      if (
+        cellX >= 0 &&
+        cellX < tetriminoShape.length &&
+        cellY >= 0 &&
+        cellY < tetriminoShape.length
+      ) {
+        colorNumber =
+          tetriminoShape[cellY][cellX] === 0
+            ? colorNumber
+            : tetriminoColorNumber;
+      }
+
+      return <MatrixCell key={`${col}${row}`} colorNumber={colorNumber} />;
+    });
+  });
+
+  return <div className="matrix">{gridCells}</div>;
 };
 
 export { Matrix };
