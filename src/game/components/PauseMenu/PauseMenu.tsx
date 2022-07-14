@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog } from '../Dialog';
+import { Dialog } from '../../../layout/Dialog';
 import './PauseMenu.css';
 
 const PauseMenu = () => {

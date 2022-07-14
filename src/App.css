@@ -4,16 +4,8 @@
   flex-direction: column;
 }
 
-.app__header {
-  text-align: center;
-}
-
 .app__tetrion {
   flex: 1 auto;
   display: flex;
   align-items: center;
-}
-
-.app__footer {
-  text-align: center;
 }
