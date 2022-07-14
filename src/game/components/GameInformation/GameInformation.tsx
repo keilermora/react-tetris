@@ -1,20 +1,22 @@
 import React from 'react';
+import { useGameState } from '../../../hooks/useGameState';
+import { pause } from '../../state/actions';
 import './GameInformation.css';
 
 const GameInformation = () => {
-  // @TODO Update with true values
-  const currentScore = 0;
-  const currentLevel = 0;
+  const { state, dispatch } = useGameState();
 
-  // @TODO Create onClick event
+  const pauseGame = () => {
+    dispatch(pause());
+  };
 
   return (
     <div className="game-information">
       <dl>
-        <dt>Score: {currentScore}</dt>
-        <dt>Level: {currentLevel}</dt>
+        <dt>Score: {state.currentScore}</dt>
+        <dt>Level: {state.currentLevel}</dt>
       </dl>
-      <button onClick={console.log}>Pause</button>
+      <button onClick={pauseGame}>Pause</button>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useGameState } from '../../../hooks/useGameState';
 import { Controls } from '../Controls';
 import { GameInformation } from '../GameInformation';
 import { Matrix } from '../Matrix';
@@ -7,8 +8,7 @@ import { PauseMenu } from '../PauseMenu';
 import './Tetrion.css';
 
 const Tetrion = () => {
-  // @TODO Do something to pause the game
-  const isPaused = false;
+  const { state } = useGameState();
 
   return (
     <div className="tetrion">
@@ -24,7 +24,7 @@ const Tetrion = () => {
       <div className="tetrion__controls">
         <Controls />
       </div>
-      {isPaused && <PauseMenu />}
+      {!state.isRunning && <PauseMenu />}
     </div>
   );
 };
