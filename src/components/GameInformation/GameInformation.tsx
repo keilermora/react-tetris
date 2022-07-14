@@ -5,9 +5,8 @@ const GameInformation = () => {
   // @TODO Update with true values
   const currentScore = 0;
   const currentLevel = 0;
-  const isPaused = false;
 
-  // @TODO Create onClick events
+  // @TODO Create onClick event
 
   return (
     <div className="game-information">
@@ -15,12 +14,7 @@ const GameInformation = () => {
         <dt>Score: {currentScore}</dt>
         <dt>Level: {currentLevel}</dt>
       </dl>
-      <button className="game-information__button" onClick={console.log}>
-        {!isPaused ? 'Pause' : 'Resume'}
-      </button>
-      <button className="game-information__button" onClick={console.log}>
-        Restart
-      </button>
+      <button onClick={console.log}>Pause</button>
     </div>
   );
 };

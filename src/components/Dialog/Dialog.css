@@ -1,0 +1,23 @@
+.dialog__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dialog__overlay {
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  right: 0;
+  width: 320px;
+  margin: auto;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
