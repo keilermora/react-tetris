@@ -1,7 +1,4 @@
-import {
-  getNextTetriminoRotation,
-  validateRotation,
-} from '../configs/tetriminos';
+import { getNextTetriminoRotation, validateMove } from '../configs/tetriminos';
 import { GameActions } from '../constants/gameActions';
 import GameAction from '../interfaces/gameAction';
 import { getInitialState } from './initialState';
@@ -12,27 +9,55 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
   switch (action.type) {
     case GameActions.ROTATE: {
       const newRotation = getNextTetriminoRotation(tetriminoInPlay);
-      const { rotation, x, y } = tetriminoInPlay;
-      const canRotate = validateRotation(
-        rotation,
-        matrixGrid,
-        x,
-        y,
-        newRotation
-      );
-      if (canRotate) {
-        const newTetriminoInPlay = {
-          ...tetriminoInPlay,
-          rotation: newRotation,
+      const { x, y } = tetriminoInPlay;
+      if (validateMove(tetriminoInPlay, matrixGrid, x, y, newRotation)) {
+        return {
+          ...state,
+          tetriminoInPlay: {
+            ...tetriminoInPlay,
+            rotation: newRotation,
+          },
         };
-
-        return { ...state, tetriminoInPlay: newTetriminoInPlay };
       }
       return state;
     }
     case GameActions.MOVE_RIGHT:
+      if (
+        validateMove(
+          tetriminoInPlay,
+          matrixGrid,
+          tetriminoInPlay.x + 1,
+          tetriminoInPlay.y,
+          tetriminoInPlay.rotation
+        )
+      ) {
+        return {
+          ...state,
+          tetriminoInPlay: {
+            ...tetriminoInPlay,
+            x: tetriminoInPlay.x + 1,
+          },
+        };
+      }
       return state;
     case GameActions.MOVE_LEFT:
+      if (
+        validateMove(
+          tetriminoInPlay,
+          matrixGrid,
+          tetriminoInPlay.x - 1,
+          tetriminoInPlay.y,
+          tetriminoInPlay.rotation
+        )
+      ) {
+        return {
+          ...state,
+          tetriminoInPlay: {
+            ...tetriminoInPlay,
+            x: tetriminoInPlay.x - 1,
+          },
+        };
+      }
       return state;
     case GameActions.MOVE_DOWN:
       return state;

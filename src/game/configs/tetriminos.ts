@@ -15,14 +15,14 @@ export const getRandomTetrimino = () => {
   return tetriminos[index];
 };
 
-export const validateRotation = (
-  tetriminoIndex: number,
+export const validateMove = (
+  tetriminoInPlay: TetriminoInPlay,
   grid: number[][],
   x: number,
   y: number,
   rotation: number
 ) => {
-  const currentShape = tetriminos[tetriminoIndex].shapes[rotation];
+  const currentShape = tetriminoInPlay.tetrimino.shapes[rotation];
 
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
