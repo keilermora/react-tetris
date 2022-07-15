@@ -11,7 +11,7 @@ import TetriminoInPlay from '../interfaces/tetriminoInPlay';
 import { getScorePoints } from '../utils/score';
 
 const gameReducer = (state = getInitialState(), action: GameAction) => {
-  const { currentScore, matrixGrid, tetriminoInPlay } = state;
+  const { currentLevel, currentScore, matrixGrid, tetriminoInPlay } = state;
   const { x, y } = tetriminoInPlay;
 
   switch (action.type) {
@@ -66,7 +66,8 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
       );
 
       // Update the score based on if rows were completed or not
-      const newScore = currentScore + getScorePoints(newMatrixGrid);
+      const newScore =
+        currentScore + getScorePoints(newMatrixGrid, currentLevel);
 
       // Reset values
       const newTetriminoInPlay: TetriminoInPlay = {

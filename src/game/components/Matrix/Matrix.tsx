@@ -1,11 +1,38 @@
 import React from 'react';
 import { useGameState } from '../../../hooks/useGameState';
+import { moveDown } from '../../state/actions';
 import { MatrixCell } from '../MatrixCell';
 import './Matrix.css';
 
 const Matrix = () => {
-  const { state } = useGameState();
-  const { matrixGrid, tetriminoInPlay } = state;
+  const { state, dispatch } = useGameState();
+  const { currentSpeed, isRunning, matrixGrid, tetriminoInPlay } = state;
+
+  const requestRef = React.useRef(0); // Holds a reference to requestAnimationFrame
+  const lastUpdateTimeRef = React.useRef(0); // Tracks the time of the last update
+  const progressTimeRef = React.useRef(0); // Tracks the total time between updates
+
+  React.useEffect(() => {
+    requestRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [isRunning]);
+
+  const update = (time: number) => {
+    requestRef.current = requestAnimationFrame(update);
+    if (!isRunning) {
+      return;
+    }
+    if (!lastUpdateTimeRef.current) {
+      lastUpdateTimeRef.current = time;
+    }
+    const deltaTime = time - lastUpdateTimeRef.current;
+    progressTimeRef.current += deltaTime;
+    if (progressTimeRef.current > currentSpeed) {
+      dispatch(moveDown());
+      progressTimeRef.current = 0;
+    }
+    lastUpdateTimeRef.current = time;
+  };
 
   const tetriminoShape =
     tetriminoInPlay.tetrimino.shapes[tetriminoInPlay.rotation];

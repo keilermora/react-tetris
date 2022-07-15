@@ -1,6 +1,6 @@
 import { ScorePoints } from '../constants/scorePoints';
 
-export const getScorePoints = (matrixGrid: number[][]) => {
+export const getScorePoints = (matrixGrid: number[][], level: number) => {
   const points = [
     0,
     ScorePoints.SINGLE,
@@ -18,5 +18,5 @@ export const getScorePoints = (matrixGrid: number[][]) => {
     }
   }
 
-  return points[completedRows];
+  return points[completedRows] * level;
 };
