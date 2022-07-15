@@ -1,17 +1,28 @@
 .controls {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
 }
 
-.controls button {
-  --size: calc(var(--tile-size) * 2.5);
-  width: var(--size);
-  height: var(--size);
+.controls__move-buttons {
+  display: flex;
+}
+
+.controls__move-buttons .controls__button-group:nth-child(2) {
+  margin-top: 24px;
+}
+
+.controls__rotate-button {
+  display: flex;
+  align-items: center;
+}
+
+.controls__button-group {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  display: block;
-  border-width: 5px;
-  border-top-color: var(--button-color-t);
-  border-left-color: var(--button-color-l);
-  border-right-color: var(--button-color-r);
-  border-bottom-color: var(--button-color-b);
+}
+
+.controls__button-group span {
+  font-size: 12px;
+  margin-top: 6px;
 }

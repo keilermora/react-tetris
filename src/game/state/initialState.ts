@@ -26,8 +26,8 @@ export const getInitialState = (): GameState => {
     },
     nextTetrimino: getRandomTetrimino(),
     currentScore: 0,
-    currentLevel: 5,
-    currentSpeed: getFallSpeed(5),
+    currentLevel: 1,
+    currentSpeed: getFallSpeed(1),
     isRunning: true,
     gameOver: false,
   };
