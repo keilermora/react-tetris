@@ -4,30 +4,47 @@ import { moveDown, moveLeft, moveRight, rotate } from '../../state/actions';
 import './Controls.css';
 
 const Controls = () => {
-  const { dispatch } = useGameState();
+  const { state, dispatch } = useGameState();
+  const { gameOver, isRunning } = state;
 
   const onMoveLeft = () => {
-    dispatch(moveLeft());
+    if (!gameOver && isRunning) {
+      dispatch(moveLeft());
+    }
   };
 
   const onMoveRight = () => {
-    dispatch(moveRight());
+    if (!gameOver && isRunning) {
+      dispatch(moveRight());
+    }
   };
 
   const onRotate = () => {
-    dispatch(rotate());
+    if (!gameOver && isRunning) {
+      dispatch(rotate());
+    }
   };
 
   const onMoveDown = () => {
-    dispatch(moveDown());
+    if (!gameOver && isRunning) {
+      dispatch(moveDown());
+    }
   };
 
   return (
     <div className="controls">
-      <button onClick={onMoveLeft}>Left</button>
-      <button onClick={onMoveRight}>Right</button>
-      <button onClick={onRotate}>Rotate</button>
-      <button onClick={onMoveDown}>Down</button>
+      <button disabled={gameOver || !isRunning} onClick={onMoveLeft}>
+        Left
+      </button>
+      <button disabled={gameOver || !isRunning} onClick={onMoveRight}>
+        Right
+      </button>
+      <button disabled={gameOver || !isRunning} onClick={onRotate}>
+        Rotate
+      </button>
+      <button disabled={gameOver || !isRunning} onClick={onMoveDown}>
+        Down
+      </button>
     </div>
   );
 };

@@ -93,9 +93,9 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
       return newState;
     }
     case GameActions.RESUME:
-      return state;
+      return { ...state, isRunning: true };
     case GameActions.PAUSE:
-      return state;
+      return { ...state, isRunning: false };
     case GameActions.GAME_OVER:
       return state;
     case GameActions.RESTART:
