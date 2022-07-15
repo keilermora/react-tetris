@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGameState } from '../../../hooks/useGameState';
+import { Button } from '../../../layout/Button';
 import { moveDown, moveLeft, moveRight, rotate } from '../../state/actions';
 import './Controls.css';
 
@@ -33,18 +34,18 @@ const Controls = () => {
 
   return (
     <div className="controls">
-      <button disabled={gameOver || !isRunning} onClick={onMoveLeft}>
+      <Button disabled={gameOver || !isRunning} onClick={onMoveLeft}>
         Left
-      </button>
-      <button disabled={gameOver || !isRunning} onClick={onMoveRight}>
+      </Button>
+      <Button disabled={gameOver || !isRunning} onClick={onMoveRight}>
         Right
-      </button>
-      <button disabled={gameOver || !isRunning} onClick={onRotate}>
+      </Button>
+      <Button disabled={gameOver || !isRunning} onClick={onRotate}>
         Rotate
-      </button>
-      <button disabled={gameOver || !isRunning} onClick={onMoveDown}>
+      </Button>
+      <Button disabled={gameOver || !isRunning} onClick={onMoveDown}>
         Down
-      </button>
+      </Button>
     </div>
   );
 };

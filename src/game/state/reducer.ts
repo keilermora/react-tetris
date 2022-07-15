@@ -6,7 +6,10 @@ import {
 import { GameActions } from '../constants/gameActions';
 import GameAction from '../interfaces/gameAction';
 import { GameState, getInitialState } from './initialState';
-import { addTetriminoToMatrixGrid } from '../utils/matrix';
+import {
+  addTetriminoToMatrixGrid,
+  clearHorizontalLines,
+} from '../utils/matrix';
 import TetriminoInPlay from '../interfaces/tetriminoInPlay';
 import { getScorePoints } from '../utils/score';
 
@@ -59,26 +62,26 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
         };
       }
 
-      // If not, place the Tetrimino
-      const newMatrixGrid = addTetriminoToMatrixGrid(
-        tetriminoInPlay,
-        matrixGrid
-      );
+      // If not, place the Tetrimino and check if the game is currently over
+      let newMatrixGrid = addTetriminoToMatrixGrid(tetriminoInPlay, matrixGrid);
 
       // Update the score based on if rows were completed or not
       const newScore =
         currentScore + getScorePoints(newMatrixGrid, currentLevel);
+
+      if (newScore !== currentScore) {
+        newMatrixGrid = clearHorizontalLines(newMatrixGrid);
+      }
 
       // Reset values
       const newTetriminoInPlay: TetriminoInPlay = {
         tetrimino: state.nextTetrimino,
         rotation: 0,
         x: 3,
-        y: -4,
+        y: -2,
       };
 
       if (!validateMove(newTetriminoInPlay, newMatrixGrid)) {
-        // Game Over
         return { ...state, gameOver: true };
       }
 
@@ -99,7 +102,7 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
     case GameActions.GAME_OVER:
       return state;
     case GameActions.RESTART:
-      return state;
+      return getInitialState();
     default:
       return state;
   }

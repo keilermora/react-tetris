@@ -25,8 +25,11 @@ export const addTetriminoToMatrixGrid = (
   for (let row = 0; row < shape.length; row++) {
     for (let col = 0; col < shape[row].length; col++) {
       if (shape[row][col]) {
-        newMatrixGrid[row + tetriminoInPlay.y][col + tetriminoInPlay.x] =
-          tetriminoInPlay.tetrimino.colorNumber;
+        const yIndex = row + tetriminoInPlay.y;
+        if (yIndex >= 0) {
+          newMatrixGrid[row + tetriminoInPlay.y][col + tetriminoInPlay.x] =
+            tetriminoInPlay.tetrimino.colorNumber;
+        }
       }
     }
   }

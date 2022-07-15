@@ -1,0 +1,15 @@
+.game-over-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.game-over-menu h2 {
+  margin: 0;
+}
+
+.game-over-menu__score {
+  font-size: 2rem;
+  font-weight: bold;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { useGameState } from '../../../hooks/useGameState';
 import { Controls } from '../Controls';
 import { GameInformation } from '../GameInformation';
+import { GameOverMenu } from '../GameOverMenu';
 import { Matrix } from '../Matrix';
 import { NextQueue } from '../NextQueue';
 import { PauseMenu } from '../PauseMenu';
@@ -25,6 +26,7 @@ const Tetrion = () => {
         <Controls />
       </div>
       {!state.isRunning && <PauseMenu />}
+      {state.gameOver && <GameOverMenu />}
     </div>
   );
 };

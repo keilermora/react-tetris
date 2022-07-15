@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGameState } from '../../../hooks/useGameState';
+import { Button } from '../../../layout/Button';
 import { Dialog } from '../../../layout/Dialog';
 import { restart, resume } from '../../state/actions';
 import './PauseMenu.css';
@@ -19,9 +20,9 @@ const PauseMenu = () => {
     <Dialog>
       <div className="pause-menu">
         <h2>Paused</h2>
-        <button onClick={onResume}>Resume</button>
-        <button onClick={onRestart}>Restart</button>
-        <button onClick={console.log}>Quit</button>
+        <Button onClick={onResume}>Resume</Button>
+        <Button onClick={onRestart}>Restart</Button>
+        <Button onClick={console.log}>Quit</Button>
       </div>
     </Dialog>
   );
