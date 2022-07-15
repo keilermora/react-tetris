@@ -1,5 +1,5 @@
-import { getMatrixGrid } from '../configs/matrix';
-import { getRandomTetrimino } from '../configs/tetriminos';
+import { getMatrixGrid } from '../utils/matrix';
+import { getRandomTetrimino } from '../utils/tetriminos';
 import Tetrimino from '../interfaces/tetrimino';
 import TetriminoInPlay from '../interfaces/tetriminoInPlay';
 

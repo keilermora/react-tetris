@@ -1,66 +1,96 @@
-import { getNextTetriminoRotation, validateMove } from '../configs/tetriminos';
+import {
+  getNextTetriminoRotation,
+  getRandomTetrimino,
+  validateMove,
+} from '../utils/tetriminos';
 import { GameActions } from '../constants/gameActions';
 import GameAction from '../interfaces/gameAction';
-import { getInitialState } from './initialState';
+import { GameState, getInitialState } from './initialState';
+import { addTetriminoToMatrixGrid } from '../utils/matrix';
+import TetriminoInPlay from '../interfaces/tetriminoInPlay';
+import { getScorePoints } from '../utils/score';
 
 const gameReducer = (state = getInitialState(), action: GameAction) => {
-  const { matrixGrid, tetriminoInPlay } = state;
+  const { currentScore, matrixGrid, tetriminoInPlay } = state;
+  const { x, y } = tetriminoInPlay;
 
   switch (action.type) {
     case GameActions.ROTATE: {
-      const newRotation = getNextTetriminoRotation(tetriminoInPlay);
-      const { x, y } = tetriminoInPlay;
-      if (validateMove(tetriminoInPlay, matrixGrid, x, y, newRotation)) {
+      const newTetriminoInPlay = {
+        ...tetriminoInPlay,
+        rotation: getNextTetriminoRotation(tetriminoInPlay),
+      };
+      if (validateMove(tetriminoInPlay, matrixGrid)) {
         return {
           ...state,
-          tetriminoInPlay: {
-            ...tetriminoInPlay,
-            rotation: newRotation,
-          },
+          tetriminoInPlay: newTetriminoInPlay,
         };
       }
       return state;
     }
-    case GameActions.MOVE_RIGHT:
-      if (
-        validateMove(
-          tetriminoInPlay,
-          matrixGrid,
-          tetriminoInPlay.x + 1,
-          tetriminoInPlay.y,
-          tetriminoInPlay.rotation
-        )
-      ) {
+    case GameActions.MOVE_RIGHT: {
+      const newTetriminoInPlay = { ...tetriminoInPlay, x: x + 1 };
+      if (validateMove(newTetriminoInPlay, matrixGrid)) {
         return {
           ...state,
-          tetriminoInPlay: {
-            ...tetriminoInPlay,
-            x: tetriminoInPlay.x + 1,
-          },
+          tetriminoInPlay: newTetriminoInPlay,
         };
       }
       return state;
-    case GameActions.MOVE_LEFT:
-      if (
-        validateMove(
-          tetriminoInPlay,
-          matrixGrid,
-          tetriminoInPlay.x - 1,
-          tetriminoInPlay.y,
-          tetriminoInPlay.rotation
-        )
-      ) {
+    }
+    case GameActions.MOVE_LEFT: {
+      const newTetriminoInPlay = { ...tetriminoInPlay, x: x - 1 };
+      if (validateMove(newTetriminoInPlay, matrixGrid)) {
         return {
           ...state,
-          tetriminoInPlay: {
-            ...tetriminoInPlay,
-            x: tetriminoInPlay.x - 1,
-          },
+          tetriminoInPlay: newTetriminoInPlay,
         };
       }
       return state;
-    case GameActions.MOVE_DOWN:
-      return state;
+    }
+    case GameActions.MOVE_DOWN: {
+      // Check if the Tetrimino in play can move here
+      const maybeNewTetriminoInPlay = { ...tetriminoInPlay, y: y + 1 };
+      if (validateMove(maybeNewTetriminoInPlay, matrixGrid)) {
+        // If so move it
+        return {
+          ...state,
+          tetriminoInPlay: maybeNewTetriminoInPlay,
+        };
+      }
+
+      // If not, place the Tetrimino
+      const newMatrixGrid = addTetriminoToMatrixGrid(
+        tetriminoInPlay,
+        matrixGrid
+      );
+
+      // Update the score based on if rows were completed or not
+      const newScore = currentScore + getScorePoints(newMatrixGrid);
+
+      // Reset values
+      const newTetriminoInPlay: TetriminoInPlay = {
+        tetrimino: state.nextTetrimino,
+        rotation: 0,
+        x: 3,
+        y: -4,
+      };
+
+      if (!validateMove(newTetriminoInPlay, newMatrixGrid)) {
+        // Game Over
+        return { ...state, gameOver: true };
+      }
+
+      const newState: GameState = {
+        ...state,
+        matrixGrid: newMatrixGrid,
+        tetriminoInPlay: newTetriminoInPlay,
+        nextTetrimino: getRandomTetrimino(),
+        currentScore: newScore,
+      };
+
+      return newState;
+    }
     case GameActions.RESUME:
       return state;
     case GameActions.PAUSE:
