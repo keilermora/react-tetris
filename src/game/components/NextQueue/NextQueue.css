@@ -1,5 +1,10 @@
-.piece-preview {
+.piece-preview__next-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 14px;
+}
+
+.piece-preview__grid {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(4, var(--tile-size));
 }

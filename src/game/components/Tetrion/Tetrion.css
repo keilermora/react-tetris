@@ -8,7 +8,7 @@
   display: grid;
   grid-gap: var(--tile-size) var(--tile-size);
   grid-template-columns: var(--col-side) var(--col-center) var(--col-side);
-  grid-template-rows: var(--grid-height) 100px;
+  grid-template-rows: var(--grid-height) 80px;
   grid-template-areas:
     'left center right'
     '. bottom .';

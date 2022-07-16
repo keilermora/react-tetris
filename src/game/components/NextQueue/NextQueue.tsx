@@ -20,7 +20,18 @@ const NextQueue = () => {
     });
   });
 
-  return <div className="piece-preview">{nextQueueGrid}</div>;
+  const styles = {
+    gridTemplateColumns: `repeat(${tetriminoShape[0].length}, var(--tile-size))`,
+  };
+
+  return (
+    <div className="piece-preview">
+      <span className="piece-preview__next-label">Next:</span>
+      <div className="piece-preview__grid" style={styles}>
+        {nextQueueGrid}
+      </div>
+    </div>
+  );
 };
 
 export { NextQueue };
