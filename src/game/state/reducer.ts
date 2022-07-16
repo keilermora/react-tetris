@@ -12,10 +12,22 @@ import {
 } from '../utils/matrix';
 import TetriminoInPlay from '../interfaces/tetriminoInPlay';
 import { getScorePoints } from '../utils/score';
+import {
+  blockSound,
+  gameOverSound,
+  moveSound,
+  pauseSound,
+  placeSound,
+  resumeSound,
+  rotateSound,
+  scoreSound,
+  tetrisThemeMusic,
+} from '../utils/sounds';
 
 const gameReducer = (state = getInitialState(), action: GameAction) => {
   const { currentLevel, currentScore, matrixGrid, tetriminoInPlay } = state;
   const { x, y } = tetriminoInPlay;
+  tetrisThemeMusic.play();
 
   switch (action.type) {
     case GameActions.ROTATE: {
@@ -24,31 +36,37 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
         rotation: getNextTetriminoRotation(tetriminoInPlay),
       };
       if (validateMove(tetriminoInPlay, matrixGrid)) {
+        rotateSound.play();
         return {
           ...state,
           tetriminoInPlay: newTetriminoInPlay,
         };
       }
+      blockSound.play();
       return state;
     }
     case GameActions.MOVE_RIGHT: {
       const newTetriminoInPlay = { ...tetriminoInPlay, x: x + 1 };
       if (validateMove(newTetriminoInPlay, matrixGrid)) {
+        moveSound.play();
         return {
           ...state,
           tetriminoInPlay: newTetriminoInPlay,
         };
       }
+      blockSound.play();
       return state;
     }
     case GameActions.MOVE_LEFT: {
       const newTetriminoInPlay = { ...tetriminoInPlay, x: x - 1 };
       if (validateMove(newTetriminoInPlay, matrixGrid)) {
+        moveSound.play();
         return {
           ...state,
           tetriminoInPlay: newTetriminoInPlay,
         };
       }
+      blockSound.play();
       return state;
     }
     case GameActions.MOVE_DOWN: {
@@ -71,6 +89,9 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
 
       if (newScore !== currentScore) {
         newMatrixGrid = clearHorizontalLines(newMatrixGrid);
+        scoreSound.play();
+      } else {
+        placeSound.play();
       }
 
       // Reset values
@@ -82,6 +103,8 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
       };
 
       if (!validateMove(newTetriminoInPlay, newMatrixGrid)) {
+        tetrisThemeMusic.pause();
+        gameOverSound.play();
         return { ...state, gameOver: true };
       }
 
@@ -96,12 +119,17 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
       return newState;
     }
     case GameActions.RESUME:
+      resumeSound.play();
+      tetrisThemeMusic.play();
       return { ...state, isRunning: true };
     case GameActions.PAUSE:
+      tetrisThemeMusic.pause();
+      pauseSound.play();
       return { ...state, isRunning: false };
     case GameActions.GAME_OVER:
       return state;
     case GameActions.RESTART:
+      tetrisThemeMusic.play();
       return getInitialState();
     default:
       return state;

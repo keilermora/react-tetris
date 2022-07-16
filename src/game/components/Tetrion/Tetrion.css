@@ -12,6 +12,15 @@
   grid-template-areas:
     'left center right'
     '. bottom .';
+
+  background: rgb(240, 248, 255);
+  background: radial-gradient(
+    circle,
+    rgba(240, 248, 255, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  padding: 1rem;
+  box-sizing: content-box;
 }
 
 .tetrion__game-information {
