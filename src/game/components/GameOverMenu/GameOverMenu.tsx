@@ -17,9 +17,14 @@ const GameOverMenu = () => {
       <div className="game-over-menu">
         <h2>Game Over</h2>
         <p>
-          High Score
+          Current Score
           <br />
           <span className="game-over-menu__score">{state.currentScore}</span>
+        </p>
+        <p>
+          High Score
+          <br />
+          <span className="game-over-menu__score">{state.highScore}</span>
         </p>
         <Button onClick={onPlayAgain}>Play Again</Button>
       </div>

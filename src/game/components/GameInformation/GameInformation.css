@@ -2,6 +2,10 @@
   font-weight: bold;
 }
 
+.game-information dl {
+  font-size: 14px;
+}
+
 .game-information button {
   width: 100%;
 }

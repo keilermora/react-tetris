@@ -29,11 +29,13 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
   const {
     currentLevel,
     currentScore,
+    highScore,
     isMusicMuted,
     matrixGrid,
     tetriminoInPlay,
   } = state;
   const { x, y } = tetriminoInPlay;
+
   if (!isMusicMuted) {
     tetrisThemeMusic.play();
   }
@@ -114,7 +116,15 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
       if (!validateMove(newTetriminoInPlay, newMatrixGrid)) {
         tetrisThemeMusic.pause();
         gameOverSound.play();
-        return { ...state, gameOver: true };
+
+        let newState = { ...state };
+
+        if (currentScore > highScore) {
+          localStorage.setItem(KeyItems.HIGH_SCORE, currentScore.toString());
+          newState = { ...newState, highScore: currentScore };
+        }
+
+        return { ...newState, gameOver: true };
       }
 
       const newState: GameState = {

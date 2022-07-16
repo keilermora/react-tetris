@@ -9,13 +9,14 @@ export type GameState = {
   matrixGrid: number[][];
   tetriminoInPlay: TetriminoInPlay;
   nextTetrimino: Tetrimino;
-  currentScore: number;
   currentLevel: number;
+  currentScore: number;
   currentSpeed: number;
-  isPaused: boolean;
   gameOver: boolean;
-  showsAbout: boolean;
+  highScore: number;
   isMusicMuted: boolean;
+  isPaused: boolean;
+  showsAbout: boolean;
 };
 
 export const getInitialState = (): GameState => {
@@ -28,12 +29,13 @@ export const getInitialState = (): GameState => {
       y: -2, // Generate tetrimino above the Skyline
     },
     nextTetrimino: getRandomTetrimino(),
+    currentLevel: 6,
     currentScore: 0,
-    currentLevel: 1,
-    currentSpeed: getFallSpeed(1),
+    currentSpeed: getFallSpeed(6),
+    highScore: parseInt(localStorage.getItem(KeyItems.HIGH_SCORE) || '0'),
     isPaused: false,
+    isMusicMuted: !!localStorage.getItem(KeyItems.IS_MUSIC_MUTED),
     gameOver: false,
     showsAbout: false,
-    isMusicMuted: !!localStorage.getItem(KeyItems.IS_MUSIC_MUTED),
   };
 };

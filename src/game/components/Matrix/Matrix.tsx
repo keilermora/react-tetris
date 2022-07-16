@@ -8,8 +8,8 @@ const Matrix = () => {
   const { state, dispatch } = useGameState();
   const {
     currentSpeed,
-    isPaused,
     gameOver,
+    isPaused,
     matrixGrid,
     showsAbout,
     tetriminoInPlay,

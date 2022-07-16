@@ -6,7 +6,7 @@ import './GameInformation.css';
 
 const GameInformation = () => {
   const { state, dispatch } = useGameState();
-  const { currentLevel, currentScore, isMusicMuted } = state;
+  const { currentLevel, currentScore, highScore, isMusicMuted } = state;
 
   const onPauseGame = () => {
     dispatch(pause());
@@ -24,14 +24,19 @@ const GameInformation = () => {
     <div className="game-information">
       <dl>
         <dt>
+          Level:
+          <br />
+          <span className="game-information__value">{currentLevel}</span>
+        </dt>
+        <dt>
           Score:
           <br />
           <span className="game-information__value">{currentScore}</span>
         </dt>
         <dt>
-          Level:
+          High Score:
           <br />
-          <span className="game-information__value">{currentLevel}</span>
+          <span className="game-information__value">{highScore}</span>
         </dt>
       </dl>
       <Button onClick={onPauseGame}>Pause</Button>
