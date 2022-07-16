@@ -3,6 +3,7 @@ import { getRandomTetrimino } from '../utils/tetriminos';
 import Tetrimino from '../interfaces/tetrimino';
 import TetriminoInPlay from '../interfaces/tetriminoInPlay';
 import { getFallSpeed } from '../utils/fallSpeed';
+import { KeyItems } from '../constants/keyItems';
 
 export type GameState = {
   matrixGrid: number[][];
@@ -14,6 +15,7 @@ export type GameState = {
   isPaused: boolean;
   gameOver: boolean;
   showsAbout: boolean;
+  isMusicMuted: boolean;
 };
 
 export const getInitialState = (): GameState => {
@@ -27,10 +29,11 @@ export const getInitialState = (): GameState => {
     },
     nextTetrimino: getRandomTetrimino(),
     currentScore: 0,
-    currentLevel: 6,
-    currentSpeed: getFallSpeed(6),
+    currentLevel: 1,
+    currentSpeed: getFallSpeed(1),
     isPaused: false,
     gameOver: false,
     showsAbout: false,
+    isMusicMuted: !!localStorage.getItem(KeyItems.IS_MUSIC_MUTED),
   };
 };

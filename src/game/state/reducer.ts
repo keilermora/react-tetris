@@ -23,11 +23,20 @@ import {
   scoreSound,
   tetrisThemeMusic,
 } from '../utils/sounds';
+import { KeyItems } from '../constants/keyItems';
 
 const gameReducer = (state = getInitialState(), action: GameAction) => {
-  const { currentLevel, currentScore, matrixGrid, tetriminoInPlay } = state;
+  const {
+    currentLevel,
+    currentScore,
+    isMusicMuted,
+    matrixGrid,
+    tetriminoInPlay,
+  } = state;
   const { x, y } = tetriminoInPlay;
-  tetrisThemeMusic.play();
+  if (!isMusicMuted) {
+    tetrisThemeMusic.play();
+  }
 
   switch (action.type) {
     case GameActions.ROTATE_CLOCKWISE: {
@@ -125,13 +134,17 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
 
     case GameActions.RESUME:
       resumeSound.play();
-      tetrisThemeMusic.play();
+      if (!isMusicMuted) {
+        tetrisThemeMusic.play();
+      }
       return { ...state, isPaused: false };
 
     case GameActions.GAME_OVER:
       return state;
     case GameActions.RESTART:
-      tetrisThemeMusic.play();
+      if (!isMusicMuted) {
+        tetrisThemeMusic.play();
+      }
       return getInitialState();
 
     case GameActions.SHOW_ABOUT_DIALOG:
@@ -139,6 +152,16 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
 
     case GameActions.HIDE_ABOUT_DIALOG:
       return { ...state, showsAbout: false };
+
+    case GameActions.MUTE_MUSIC:
+      tetrisThemeMusic.pause();
+      localStorage.setItem(KeyItems.IS_MUSIC_MUTED, 'true');
+      return { ...state, isMusicMuted: true };
+
+    case GameActions.UNMUTE_MUSIC:
+      tetrisThemeMusic.play();
+      localStorage.removeItem(KeyItems.IS_MUSIC_MUTED);
+      return { ...state, isMusicMuted: false };
 
     default:
       return state;

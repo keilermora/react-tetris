@@ -35,3 +35,11 @@ export const showAboutDialog = () => {
 export const hideAboutDialog = () => {
   return { type: GameActions.HIDE_ABOUT_DIALOG };
 };
+
+export const muteMusic = () => {
+  return { type: GameActions.MUTE_MUSIC };
+};
+
+export const unmuteMusic = () => {
+  return { type: GameActions.UNMUTE_MUSIC };
+};
