@@ -23,7 +23,7 @@ export const validateMove = (
 
   for (let row = 0; row < currentShape.length; row++) {
     for (let col = 0; col < currentShape[row].length; col++) {
-      // look for a Mino (1)
+      // look for a Mino
       if (currentShape[row][col] !== 0) {
         const proposedX = col + tetriminoInPlay.x; // x offset on grid
         const proposedY = row + tetriminoInPlay.y; // y offset on grid
