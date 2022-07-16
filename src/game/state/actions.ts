@@ -27,3 +27,11 @@ export const restart = () => {
 export const resume = () => {
   return { type: GameActions.RESUME };
 };
+
+export const showAboutDialog = () => {
+  return { type: GameActions.SHOW_ABOUT_DIALOG };
+};
+
+export const hideAboutDialog = () => {
+  return { type: GameActions.HIDE_ABOUT_DIALOG };
+};

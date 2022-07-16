@@ -10,7 +10,7 @@ const MatrixCell = ({ colorNumber }: MatrixCellProps) => {
   const { state } = useGameState();
 
   // There shouldn't be Minos in the Matrix if the game is paused
-  if (!state.isRunning && colorNumber) {
+  if (state.isPaused && colorNumber) {
     colorNumber = 0;
   }
 

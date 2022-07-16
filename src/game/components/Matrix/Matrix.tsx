@@ -6,8 +6,14 @@ import './Matrix.css';
 
 const Matrix = () => {
   const { state, dispatch } = useGameState();
-  const { currentSpeed, isRunning, gameOver, matrixGrid, tetriminoInPlay } =
-    state;
+  const {
+    currentSpeed,
+    isPaused,
+    gameOver,
+    matrixGrid,
+    showsAbout,
+    tetriminoInPlay,
+  } = state;
 
   const requestRef = React.useRef(0); // Holds a reference to requestAnimationFrame
   const lastUpdateTimeRef = React.useRef(0); // Tracks the time of the last update
@@ -16,11 +22,11 @@ const Matrix = () => {
   React.useEffect(() => {
     requestRef.current = requestAnimationFrame(update);
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isRunning, gameOver]);
+  }, [isPaused, gameOver, showsAbout]);
 
   const update = (time: number) => {
     requestRef.current = requestAnimationFrame(update);
-    if (!isRunning || gameOver) {
+    if (isPaused || gameOver || showsAbout) {
       return;
     }
 

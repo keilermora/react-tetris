@@ -1,13 +1,32 @@
 import React from 'react';
 import githubLogo from '../../assets/images/github-logo.png';
 import linkedinLogo from '../../assets/images/linkedin-logo.png';
+import { hideAboutDialog, showAboutDialog } from '../../game/state/actions';
+import { useGameState } from '../../hooks/useGameState';
+import { AboutDialog } from '../AboutDialog';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { state, dispatch } = useGameState();
+
+  const closeAboutDialog = () => {
+    dispatch(hideAboutDialog());
+  };
+
   return (
     <nav className="navbar">
       <h1>Tetris React</h1>
       <ul>
+        <li>
+          <button
+            className="navbar__about-button"
+            onClick={() => {
+              dispatch(showAboutDialog());
+            }}
+          >
+            About
+          </button>
+        </li>
         <li>
           <a
             href="https://github.com/keilermora/tetris-react"
@@ -27,6 +46,7 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
+      {state.showsAbout && <AboutDialog closeAboutDialog={closeAboutDialog} />}
     </nav>
   );
 };

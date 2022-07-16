@@ -11,8 +11,9 @@ export type GameState = {
   currentScore: number;
   currentLevel: number;
   currentSpeed: number;
-  isRunning: boolean;
+  isPaused: boolean;
   gameOver: boolean;
+  showsAbout: boolean;
 };
 
 export const getInitialState = (): GameState => {
@@ -28,7 +29,8 @@ export const getInitialState = (): GameState => {
     currentScore: 0,
     currentLevel: 6,
     currentSpeed: getFallSpeed(6),
-    isRunning: true,
+    isPaused: false,
     gameOver: false,
+    showsAbout: false,
   };
 };

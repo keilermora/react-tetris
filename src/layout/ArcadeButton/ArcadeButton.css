@@ -1,4 +1,5 @@
 .arcade-button {
+  cursor: pointer;
   border-radius: 50%;
   border-width: 5px;
   border-top-color: var(--button-color-t);

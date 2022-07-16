@@ -11,7 +11,7 @@ import './Controls.css';
 
 const Controls = () => {
   const { state, dispatch } = useGameState();
-  const { gameOver, isRunning } = state;
+  const { gameOver, isPaused } = state;
 
   const handleUserKeyPress = React.useCallback((event: KeyboardEvent) => {
     const { key } = event;
@@ -36,25 +36,25 @@ const Controls = () => {
   }, [handleUserKeyPress]);
 
   const onMoveLeft = () => {
-    if (!gameOver && isRunning) {
+    if (!gameOver && !isPaused) {
       dispatch(moveLeft());
     }
   };
 
   const onMoveRight = () => {
-    if (!gameOver && isRunning) {
+    if (!gameOver && !isPaused) {
       dispatch(moveRight());
     }
   };
 
   const onRotate = () => {
-    if (!gameOver && isRunning) {
+    if (!gameOver && !isPaused) {
       dispatch(rotateClockwise());
     }
   };
 
   const onMoveDown = () => {
-    if (!gameOver && isRunning) {
+    if (!gameOver && !isPaused) {
       dispatch(moveDown());
     }
   };
@@ -64,7 +64,7 @@ const Controls = () => {
       <div className="controls__move-buttons">
         <div className="controls__button-group">
           <ArcadeButton
-            disabled={gameOver || !isRunning}
+            disabled={gameOver || isPaused}
             onClick={onMoveLeft}
             size={'small'}
           >
@@ -74,7 +74,7 @@ const Controls = () => {
         </div>
         <div className="controls__button-group">
           <ArcadeButton
-            disabled={gameOver || !isRunning}
+            disabled={gameOver || isPaused}
             onClick={onMoveDown}
             size={'small'}
           >
@@ -84,7 +84,7 @@ const Controls = () => {
         </div>
         <div className="controls__button-group">
           <ArcadeButton
-            disabled={gameOver || !isRunning}
+            disabled={gameOver || isPaused}
             onClick={onMoveRight}
             size={'small'}
           >
@@ -96,7 +96,7 @@ const Controls = () => {
       <div className="controls__rotate-button">
         <div className="controls__button-group">
           <ArcadeButton
-            disabled={gameOver || !isRunning}
+            disabled={gameOver || isPaused}
             onClick={onRotate}
             size={'large'}
           >

@@ -13,3 +13,9 @@
 .navbar ul li {
   padding: 0 1rem;
 }
+
+.navbar__about-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}

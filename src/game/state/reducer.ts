@@ -118,19 +118,23 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
 
       return newState;
     }
-    case GameActions.RESUME:
-      resumeSound.play();
-      tetrisThemeMusic.play();
-      return { ...state, isRunning: true };
     case GameActions.PAUSE:
       tetrisThemeMusic.pause();
       pauseSound.play();
-      return { ...state, isRunning: false };
+      return { ...state, isPaused: true };
+    case GameActions.RESUME:
+      resumeSound.play();
+      tetrisThemeMusic.play();
+      return { ...state, isPaused: false };
     case GameActions.GAME_OVER:
       return state;
     case GameActions.RESTART:
       tetrisThemeMusic.play();
       return getInitialState();
+    case GameActions.SHOW_ABOUT_DIALOG:
+      return { ...state, showsAbout: true };
+    case GameActions.HIDE_ABOUT_DIALOG:
+      return { ...state, showsAbout: false };
     default:
       return state;
   }

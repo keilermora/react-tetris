@@ -25,7 +25,7 @@ const Tetrion = () => {
       <div className="tetrion__controls">
         <Controls />
       </div>
-      {!state.isRunning && <PauseMenu />}
+      {state.isPaused && <PauseMenu />}
       {state.gameOver && <GameOverMenu />}
     </div>
   );

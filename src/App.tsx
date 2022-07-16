@@ -8,13 +8,13 @@ import { GameStateProvider } from './providers/GameStateProvider';
 function App() {
   return (
     <div className="app">
-      <Navbar />
-      <div className="app__tetrion">
-        <GameStateProvider>
+      <GameStateProvider>
+        <Navbar />
+        <div className="app__tetrion">
           <Tetrion />
-        </GameStateProvider>
-      </div>
-      <Footer />
+        </div>
+        <Footer />
+      </GameStateProvider>
     </div>
   );
 }
