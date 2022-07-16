@@ -22,7 +22,6 @@ const PauseMenu = () => {
         <h2>Paused</h2>
         <Button onClick={onResume}>Resume</Button>
         <Button onClick={onRestart}>Restart</Button>
-        <Button onClick={console.log}>Quit</Button>
       </div>
     </Dialog>
   );

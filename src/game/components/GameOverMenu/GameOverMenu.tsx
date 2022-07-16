@@ -22,7 +22,6 @@ const GameOverMenu = () => {
           <span className="game-over-menu__score">{state.currentScore}</span>
         </p>
         <Button onClick={onPlayAgain}>Play Again</Button>
-        <Button onClick={console.log}>Quit</Button>
       </div>
     </Dialog>
   );
