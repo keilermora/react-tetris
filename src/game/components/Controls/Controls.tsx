@@ -63,31 +63,19 @@ const Controls = () => {
     <div className="controls">
       <div className="controls__move-buttons">
         <div className="controls__button-group">
-          <ArcadeButton
-            disabled={gameOver || isPaused}
-            onClick={onMoveLeft}
-            size={'small'}
-          >
+          <ArcadeButton onClick={onMoveLeft} size={'small'}>
             {' '}
           </ArcadeButton>
           <span>Left</span>
         </div>
         <div className="controls__button-group">
-          <ArcadeButton
-            disabled={gameOver || isPaused}
-            onClick={onMoveDown}
-            size={'small'}
-          >
+          <ArcadeButton onClick={onMoveDown} size={'small'}>
             {' '}
           </ArcadeButton>
           <span>Down</span>
         </div>
         <div className="controls__button-group">
-          <ArcadeButton
-            disabled={gameOver || isPaused}
-            onClick={onMoveRight}
-            size={'small'}
-          >
+          <ArcadeButton onClick={onMoveRight} size={'small'}>
             {' '}
           </ArcadeButton>
           <span>Right</span>
@@ -95,11 +83,7 @@ const Controls = () => {
       </div>
       <div className="controls__rotate-button">
         <div className="controls__button-group">
-          <ArcadeButton
-            disabled={gameOver || isPaused}
-            onClick={onRotate}
-            size={'large'}
-          >
+          <ArcadeButton onClick={onRotate} size={'large'}>
             {' '}
           </ArcadeButton>
           <span>Rotate</span>
