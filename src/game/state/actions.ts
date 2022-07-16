@@ -12,8 +12,8 @@ export const moveRight = () => {
   return { type: GameActions.MOVE_RIGHT };
 };
 
-export const rotate = () => {
-  return { type: GameActions.ROTATE };
+export const rotateClockwise = () => {
+  return { type: GameActions.ROTATE_CLOCKWISE };
 };
 
 export const pause = () => {

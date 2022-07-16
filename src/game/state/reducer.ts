@@ -30,7 +30,7 @@ const gameReducer = (state = getInitialState(), action: GameAction) => {
   tetrisThemeMusic.play();
 
   switch (action.type) {
-    case GameActions.ROTATE: {
+    case GameActions.ROTATE_CLOCKWISE: {
       const newTetriminoInPlay = {
         ...tetriminoInPlay,
         rotation: getNextTetriminoRotation(tetriminoInPlay),

@@ -1,12 +1,39 @@
 import React from 'react';
 import { useGameState } from '../../../hooks/useGameState';
 import { ArcadeButton } from '../../../layout/ArcadeButton';
-import { moveDown, moveLeft, moveRight, rotate } from '../../state/actions';
+import {
+  moveDown,
+  moveLeft,
+  moveRight,
+  rotateClockwise,
+} from '../../state/actions';
 import './Controls.css';
 
 const Controls = () => {
   const { state, dispatch } = useGameState();
   const { gameOver, isRunning } = state;
+
+  const handleUserKeyPress = React.useCallback((event: KeyboardEvent) => {
+    const { key } = event;
+
+    if (key === 'ArrowLeft') {
+      onMoveLeft();
+    } else if (key === 'ArrowRight') {
+      onMoveRight();
+    } else if (key === 'ArrowDown') {
+      onMoveDown();
+    } else if (key === 'ArrowUp' || key === 'x') {
+      onRotate();
+    }
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleUserKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   const onMoveLeft = () => {
     if (!gameOver && isRunning) {
@@ -22,7 +49,7 @@ const Controls = () => {
 
   const onRotate = () => {
     if (!gameOver && isRunning) {
-      dispatch(rotate());
+      dispatch(rotateClockwise());
     }
   };
 
