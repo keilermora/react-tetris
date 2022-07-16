@@ -1,6 +1,9 @@
 .controls {
   display: flex;
   justify-content: space-between;
+  max-width: 100vw;
+  margin: auto;
+  padding: 0 16px;
 }
 
 .controls__move-buttons {
@@ -25,4 +28,5 @@
 .controls__button-group span {
   font-size: 12px;
   margin-top: 6px;
+  pointer-events: none;
 }

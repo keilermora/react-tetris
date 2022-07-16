@@ -3,15 +3,16 @@
   --col-center: calc(var(--tile-size) * var(--cols));
   --grid-height: calc(var(--tile-size) * var(--rows));
 
-  width: calc(var(--tile-size) * 20);
-  margin: auto;
   display: grid;
-  grid-gap: var(--tile-size) var(--tile-size);
-  grid-template-columns: var(--col-side) var(--col-center) var(--col-side);
+  grid-gap: var(--tile-size);
+  grid-template-columns: minmax(auto, var(--col-side)) minmax(
+      auto,
+      var(--col-center)
+    ) minmax(auto, var(--col-side));
   grid-template-rows: var(--grid-height) 80px;
   grid-template-areas:
     'left center right'
-    '. bottom .';
+    'bottom bottom bottom';
 
   background: rgb(240, 248, 255);
   background: radial-gradient(

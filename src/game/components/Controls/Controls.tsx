@@ -12,7 +12,6 @@ import './Controls.css';
 const Controls = () => {
   const { state, dispatch } = useGameState();
   const { gameOver, isPaused } = state;
-
   const handleUserKeyPress = React.useCallback((event: KeyboardEvent) => {
     const { key } = event;
 
