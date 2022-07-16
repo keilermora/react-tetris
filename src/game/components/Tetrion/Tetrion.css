@@ -5,10 +5,9 @@
 
   display: grid;
   grid-gap: var(--tile-size);
-  grid-template-columns: minmax(auto, var(--col-side)) minmax(
-      auto,
-      var(--col-center)
-    ) minmax(auto, var(--col-side));
+  grid-template-columns:
+    minmax(auto, var(--col-side)) minmax(auto, var(--col-center))
+    minmax(auto, var(--col-side));
   grid-template-rows: var(--grid-height) 80px;
   grid-template-areas:
     'left center right'

@@ -11,7 +11,7 @@
 
 .matrix-cell--color-0 {
   background-color: var(--color-0);
-  border-color: var(--color-0);
+  border-color: var(--border-bottom-color);
 }
 
 .matrix-cell--color-1 {
