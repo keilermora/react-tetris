@@ -2,7 +2,7 @@
 
 # Tetris React
 
-https://keilermora.github.io/react-tetris/
+https://keilermora.github.io/tetris-react/
 
 A classic game built in React as a learning project.
 

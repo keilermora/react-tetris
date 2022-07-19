@@ -29,7 +29,7 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            href="https://github.com/keilermora/react-tetris"
+            href="https://github.com/keilermora/tetris-react"
             target="_blank"
             rel="noreferrer"
           >
