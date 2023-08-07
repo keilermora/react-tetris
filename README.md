@@ -1,8 +1,9 @@
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
 # Tetris React
 
-https://keilermora.github.io/tetris-react/
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+https://keilermora.github.io/react-tetris/
 
 A classic game built in React as a learning project.
 
@@ -21,7 +22,8 @@ A classic game built in React as a learning project.
 
 ### Minimum requirements
 
-- [Nodejs (LTS)](https://nodejs.org/es/).
+- [Nodejs (LTS)](https://nodejs.org/es/)
+- [PNpM](https://pnpm.io)
 - A web browser
 
 Run in the root of the project:
